@@ -8,18 +8,21 @@
         justify-content: center;
         margin: 0;
     }
+
     body {
         font-family: 'VT323';
-        font-weight:strong;
+        font-weight: strong;
         background-color: #9a6cf0;
     }
+
     .main {
-      margin-right: 145px;
+        margin-right: 145px;
         width: auto;
         height: 40em;
         display: flex;
         flex-flow: row;
     }
+
     .imageContainer {
         display: flex;
         flex-direction: column;
@@ -30,18 +33,22 @@
         background-color: #3d3136;
         border-radius: 10px;
     }
+
     .imageContainer img {
         border-radius: 10px;
         width: 950px;
         height: 540px;
     }
-    p{
+
+    p {
         text-align: center;
-        color:white;
+        color: white;
     }
+
     ul {
         list-style-type: none;
     }
+
     .shortcuts {
         position: absolute;
         margin-left: 60em;
@@ -56,31 +63,36 @@
         border-radius: 10px;
 
     }
+
     li {
         font-size: 19px;
         opacity: 100%;
         line-height: 2em;
         color: white;
     }
+
     a {
         all: unset;
     }
+
     a:hover {
         cursor: pointer;
         color: #9a6cf0;
     }
+
     .invisible-link {
         color: transparent;
         text-decoration: none;
     }
+
     .search-container {
         display: flex;
         align-items: center;
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin-bottom: 25px;
-      }
-      
+    }
+
     .search-input {
         flex: 1;
         border-radius: 10px;
@@ -90,8 +102,8 @@
         width: 937px;
         text-align: center;
         font-family: 'VT323';
-      }
-      
+    }
+
     .search-button {
         padding: 8px 16px;
         background-color: #3d3136;
@@ -102,14 +114,188 @@
         opacity: 85%;
         border-radius: 10px;
         font-family: 'VT323';
-      }
-      
+    }
+
     .search-button:hover,
     .search-button:focus {
         color: #9a6cf0;
-      }
+    }
 
     .datetime-text {
         font-size: 24px;
         margin-bottom: 25px;
-      }
+    }
+
+    /* .terminal-input {
+        display: flex;
+        align-items: center;
+        background-color: #000;
+        border: 2px solid #9a6cf0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        margin-bottom: 15px;
+    } */
+
+    .terminal-input {
+        display: flex;
+        align-items: center;
+        background-color: #000;
+        border: 2px solid #9a6cf0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        margin-bottom: 15px;
+        width: 930px;
+        /* Set a fixed width */
+        height: 50px;
+        /* Set a fixed height */
+    }
+
+    .terminal-input-small {
+        display: flex;
+        align-items: center;
+        background-color: #000;
+        border: 2px solid #9a6cf0;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        margin-bottom: 15px;
+        width: 115px;
+        /* Set a fixed width */
+        height: 50px;
+        /* Set a fixed height */
+    }
+
+    .terminal-input span {
+        color: hsl(60, 100%, 50%);
+    }
+
+    #command-input {
+        background-color: #000;
+        color: #9a6cf0;
+        border: none;
+        font-family: monospace;
+        font-size: 16px;
+        outline: none;
+    }
+
+    /* .caret {
+        display: inline-block;
+        background-color: #00FF00;
+        width: 10px;
+        height: 20px;
+        animation: caret-blink 1s step-start infinite;
+        margin-left: 5px;
+      } */
+
+
+    .input-container {
+        background-color: transparent;
+        outline: none;
+        color: #00FF00;
+        font-family: monospace;
+        font-size: 16px;
+        white-space: pre;
+        display: inline;
+        width: 600px;
+        text-align: left;
+
+    }
+
+    .input-container:focus {
+        outline: none;
+    }
+
+    @keyframes caret-blink {
+
+        0%,
+        50% {
+            opacity: 0;
+        }
+
+        51%,
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .caret {
+        display: inline-block;
+        background-color: #00FF00;
+        width: 1px;
+
+        height: 20px;
+        animation: caret-blink 1s step-start infinite;
+        margin-left: 5px;
+    }
+
+    .terminal-input .prompt,
+    .terminal-input .input-container {
+        font-size: 20px;
+
+    }
+
+    .default-text {
+        color: hsl(60, 100%, 50%);
+        font-family: monospace;
+        font-size: 16px;
+    }
+
+    /* #autocomplete-list {
+        list-style: none;
+        padding: 0;
+        display: flex; /* Use flexbox to arrange items horizontally */
+    #autocomplete-list {
+        list-style: none;
+        padding: 0;
+        /* position: absolute; Position the autocomplete list absolutely */
+        top: 100%;
+        /* Position it below the input */
+        left: 0;
+        /* Align it with the left edge of the input */
+        background-color: 'white';
+        /* Set the background color */
+        /* border: 2px solid #9a6cf0; Add a border to match the terminal style */
+        border-radius: 5px;
+        /* Add border radius for style */
+        width: 100%;
+        /* Make it as wide as the input container */
+        max-height: 200px;
+        /* Limit the maximum height to avoid excessive scrolling */
+        overflow-y: auto;
+
+        /* z-index: 900; */
+    }
+
+    #autocomplete-list li {
+        margin-right: 5px;
+        /* Adjust the spacing between items */
+        display: inline;
+        /* Display list items horizontally */
+        cursor: pointer;
+        background-color: 'transparent';
+        /* Background color for each suggestion */
+        padding: 5px;
+        color: hsl(60, 100%, 50%);
+        /* border: 1px solid #ddd; */
+    }
+
+    #autocomplete-list li:hover {
+        background-color: #ddd;
+        /* Highlight suggestion on hover */
+    }
+
+
+
+
+
+
+    /* @keyframes caret-blink {
+        0%, 50% {
+          opacity: 0;
+        }
+        51%, 100% {
+          opacity: 1;
+        }
+      } */

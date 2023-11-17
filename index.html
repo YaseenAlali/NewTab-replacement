@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New tab</title>
+  <link href="./files/style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body id="body">
+  <div id="datetime" class="datetime-text">
+  </div>
+  <div style="display:flex; justify-content: space-between;">
+    <div class="terminal-input" id="terminalinput">
+      <div class="prompt">
+        <span>Cow@SkoomaDen:~$</span>
+      </div>
+      <div class="input-container" contenteditable="true" id="command-input" spellcheck="false" maxlength="50"></div>
+      <div class="default-text" id="outputText"></div>
+    </div>
+
+    <div class="terminal-input-small">
+      <ul id="autocomplete-list"></ul>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+
+  <div class="main" id="main">
+    <div class="imageContainer">
+      <img id="randomImage" style="border:2px solid white" alt="not found.jpg">
+    </div>
+    <div class="shortcuts" id="shortcuts">
+      <ul>
+        <li><a href="https://youtube.com/">Youtube</a></li>
+        <li><a href="https://facebook.com">Facebook</a></li>
+        <li><a href="https://web.whatsapp.com//">Whatsapp</a></li>
+        <li><a href="https://bitbucket.org/">Bitbucket</a></li>
+        <li><a href="https://mail.google.com/mail/u/1/">Mail</a></li>
+        <li><a href="https://portal.azure.com/#home">Azure</a></li>
+        <li><a href="https://www.linkedin.com/">Linkedin</a></li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+<script>
+  const commandInputt = document.getElementById("command-input");
+  commandInputt.focus();
+</script>
+
+<script>
+  document.getElementById('search-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const searchInput = document.querySelector('.search-input');
+    const searchTerm = searchInput.value.trim();
+
+    if (searchTerm) {
+      window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+    }
+  });
+</script>
+
+<script>
+  function updateTime() {
+    const datetimeElement = document.getElementById("datetime");
+    const now = new Date();
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      hour12: true
+    };
+    const formattedDateTime = now.toLocaleString('en-US', options);
+    datetimeElement.textContent = formattedDateTime;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+
+
+<script>
+  function switchMainAndSecondaryColors(mainColor, secondaryColor) {
+    var body = document.getElementById("body");
+    var search = document.getElementById("search-button");
+    var shortcuts = document.getElementById("shortcuts");
+
+    body.style.backgroundColor = mainColor;
+    shortcuts.style.backgroundColor = secondaryColor;
+    search.style.backgroundColor = secondaryColor;
+  }
+
+  function handleImage(index) {
+    var colors = [
+      { "main": "#273f66", "secondary": "#2c2f33" },
+      { "main": "#8f8078 ", "secondary": "#37382f" },
+      { "main": "#45060c", "secondary": "#030303" },
+      { "main": "#000000", "secondary": "#176e30" },
+      { "main": "#092900", "secondary": "#030303" },
+      { "main": "#391047", "secondary": "#2c2f33" },
+    ];
+    switchMainAndSecondaryColors(colors[index].main, colors[index].secondary);
+  }
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // let hours = new Date().getHours();
+  let hours = 10;
+  var imageSources = ['./files/sitting.gif', './files/oblivion.gif', './files/elec.gif', './files/techno.gif', './files/asci.gif'];
+  var randomIndex = (hours > 20 || hours < 5) ? imageSources.length - 1 : getRandomInt(0, imageSources.length - 2);
+  var randomImageElement = document.getElementById('randomImage');
+  randomImageElement.src = imageSources[randomIndex];
+  handleImage(randomIndex);
+</script>
+
+
+</html>
